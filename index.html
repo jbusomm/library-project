@@ -4,10 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
     <title>Library Project</title>
   </head>
   <body>
     <div class="shelf"></div>
+    <dialog>
+      <form action="dialog">
+        <input id="title" name="title" type="text" />
+        <input id="author" name="author" type="text" />
+        <input id="pages" name="pages" type="text" />
+        <select name="read" id="read">
+          <option>Read</option>
+          <option>Not read</option>
+        </select>
+        <button type="submit">Submit</button>
+        <button formmethod="dialog" class="close">Cancel</button>
+      </form>
+    </dialog>
+    <button class="open">Show the dialog</button>
   </body>
+  <script src="script.js"></script>
 </html>
