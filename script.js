@@ -45,8 +45,11 @@ form.addEventListener("submit", (e) => {
   dialog.close();
 });
 
-function Book() {
-  // Constructor
+function Book(title, author, pages, read) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
 }
 
 function displayBook() {
