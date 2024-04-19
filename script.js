@@ -14,36 +14,7 @@ const myLibrary = [
   },
 ];
 
-const shelf = document.querySelector(".shelf");
-const dialog = document.querySelector("dialog");
-const form = document.querySelector("form");
-const showButton = document.querySelector(".open");
-const closeButton = document.querySelector(".close");
-
-// "Show the dialog" button opens the dialog modally
-showButton.addEventListener("click", () => {
-  dialog.showModal();
-});
-
-// "Close" button closes the dialog
-closeButton.addEventListener("click", () => {
-  dialog.close();
-});
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  let title = document.getElementById("title").value;
-  let author = document.getElementById("author").value;
-  let pages = document.getElementById("pages").value;
-  let read = document.getElementById("read").value;
-
-  console.log(title);
-  console.log(author);
-  console.log(pages);
-  console.log(read);
-  dialog.close();
-});
+let obj = {};
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -81,4 +52,57 @@ function displayBook() {
     div.append(ul);
   }
 }
-function addBookToLibrary() {}
+function addBookToLibrary(obj) {
+  myLibrary.push(obj);
+}
+
+const shelf = document.querySelector(".shelf");
+const dialog = document.querySelector("dialog");
+const form = document.querySelector("form");
+const showButton = document.querySelector(".open");
+const closeButton = document.querySelector(".close");
+const submitButton = document.querySelector(".submitBtn");
+
+// "Show the dialog" button opens the dialog modally
+showButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+// "Close" button closes the dialog
+// closeButton.addEventListener("click", () => {
+//   dialog.close();
+// });
+
+// form.addEventListener("submit", (e) => {
+//   e.preventDefault();
+
+submitButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  let title = document.getElementById("title").value;
+  let author = document.getElementById("author").value;
+  let pages = document.getElementById("pages").value;
+  let read = document.getElementById("read").value;
+
+  if ((title != "") & (author != "") & (pages != "") & (read != "")) {
+    obj = new Book(title, author, pages, read);
+    console.log(title);
+    console.log(author);
+    console.log(pages);
+    console.log(read);
+    dialog.close();
+    form.reset();
+    addBookToLibrary(obj);
+    console.log(obj);
+  } else {
+    alert("Fill every area please.");
+  }
+});
+
+function checkIfFilled(input) {
+  if (input === undefined) {
+    console.log("nah chill");
+  } else if (input !== undefined) {
+    if (input.lenght === 0) return true;
+    if (input.lenght !== 0) return false;
+  }
+}
