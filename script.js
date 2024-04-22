@@ -10,8 +10,9 @@ function Book(title, author, pages, read) {
 }
 
 function displayBook() {
-  // Loops out myLibrary Object Array
+  // Cleans out shelf to prevent dupes
   shelf.replaceChildren("");
+  // Loops out myLibrary Object Array
   for (let i = 0; i < myLibrary.length; i++) {
     // Shelf div for the book display
     const shelf = document.querySelector(".shelf");
@@ -29,12 +30,28 @@ function displayBook() {
     let liAuthor = document.createElement("li");
     let liPages = document.createElement("li");
     let liRead = document.createElement("li");
+    // Add respective book buttons
+    let removeBtn = document.createElement("button");
+    let statusBtn = document.createElement("button");
+
+    removeBtn.innerText = "Remove book";
+    statusBtn.innerText = "Change status";
+
+    // Remove button functionality
+    removeBtn.setAttribute("data-attribute", `${i}`);
+    const removeIndex = removeBtn.getAttribute("data-attribute");
+    removeBtn.addEventListener("click", () => {
+      myLibrary.splice(removeIndex, 1);
+      displayBook();
+    });
+
     liAuthor.innerText = `Author:  ${myLibrary[i].author}`;
     liPages.innerText = `Pages: ${myLibrary[i].pages}`;
     liRead.innerText = `Status:  ${myLibrary[i].read}`;
     ul.append(liAuthor);
     ul.append(liPages);
     ul.append(liRead);
+    ul.append(removeBtn);
     div.append(ul);
   }
 }
