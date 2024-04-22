@@ -45,12 +45,23 @@ function displayBook() {
       displayBook();
     });
 
+    // Change status button functionality
+    statusBtn.addEventListener("click", () => {
+      if (myLibrary[removeIndex].read === "Read") {
+        myLibrary[removeIndex].read = "Not read";
+      } else {
+        myLibrary[removeIndex].read = "Read";
+      }
+      displayBook();
+    });
+
     liAuthor.innerText = `Author:  ${myLibrary[i].author}`;
     liPages.innerText = `Pages: ${myLibrary[i].pages}`;
     liRead.innerText = `Status:  ${myLibrary[i].read}`;
     ul.append(liAuthor);
     ul.append(liPages);
     ul.append(liRead);
+    ul.append(statusBtn);
     ul.append(removeBtn);
     div.append(ul);
   }
