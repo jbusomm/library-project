@@ -1,18 +1,4 @@
-const myLibrary = [
-  {
-    title: "Juegos del hambre",
-    author: "Jeremih Bomboclaat",
-    pages: "495",
-    read: "read",
-  },
-
-  {
-    title: "The Finals",
-    author: "Mikel Santiago",
-    pages: "326",
-    read: "not read",
-  },
-];
+const myLibrary = [];
 
 let obj = {};
 
@@ -25,7 +11,7 @@ function Book(title, author, pages, read) {
 
 function displayBook() {
   // Loops out myLibrary Object Array
-
+  shelf.replaceChildren("");
   for (let i = 0; i < myLibrary.length; i++) {
     // Shelf div for the book display
     const shelf = document.querySelector(".shelf");
@@ -52,6 +38,7 @@ function displayBook() {
     div.append(ul);
   }
 }
+
 function addBookToLibrary(obj) {
   myLibrary.push(obj);
 }
@@ -67,14 +54,6 @@ const submitButton = document.querySelector(".submitBtn");
 showButton.addEventListener("click", () => {
   dialog.showModal();
 });
-
-// "Close" button closes the dialog
-// closeButton.addEventListener("click", () => {
-//   dialog.close();
-// });
-
-// form.addEventListener("submit", (e) => {
-//   e.preventDefault();
 
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
@@ -93,16 +72,8 @@ submitButton.addEventListener("click", (e) => {
     form.reset();
     addBookToLibrary(obj);
     console.log(obj);
+    displayBook();
   } else {
     alert("Fill every area please.");
   }
 });
-
-function checkIfFilled(input) {
-  if (input === undefined) {
-    console.log("nah chill");
-  } else if (input !== undefined) {
-    if (input.lenght === 0) return true;
-    if (input.lenght !== 0) return false;
-  }
-}
