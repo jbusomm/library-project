@@ -83,6 +83,11 @@ showButton.addEventListener("click", () => {
   dialog.showModal();
 });
 
+closeButton.addEventListener("click", () => {
+  form.reset();
+  dialog.closeModal();
+});
+
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
   let title = document.getElementById("title").value;
