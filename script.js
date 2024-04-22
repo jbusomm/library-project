@@ -39,18 +39,18 @@ function displayBook() {
 
     // Remove button functionality
     removeBtn.setAttribute("data-attribute", `${i}`);
-    const removeIndex = removeBtn.getAttribute("data-attribute");
+    const currIndex = removeBtn.getAttribute("data-attribute");
     removeBtn.addEventListener("click", () => {
-      myLibrary.splice(removeIndex, 1);
+      myLibrary.splice(currIndex, 1);
       displayBook();
     });
 
     // Change status button functionality
     statusBtn.addEventListener("click", () => {
-      if (myLibrary[removeIndex].read === "Read") {
-        myLibrary[removeIndex].read = "Not read";
+      if (myLibrary[currIndex].read === "Read") {
+        myLibrary[currIndex].read = "Not read";
       } else {
-        myLibrary[removeIndex].read = "Read";
+        myLibrary[currIndex].read = "Read";
       }
       displayBook();
     });
